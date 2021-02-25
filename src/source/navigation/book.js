@@ -1,0 +1,17 @@
+export const book = Object.freeze({
+  root: '/',
+  login: '/login',
+  registration: '/registration',
+  profile: '/profile',
+  dashboard: '/fitness',
+  breakfast: '/fitness/breakfast',
+  lunch: '/fitness/lunch',
+  dinner: '/fitness/dinner',
+  coffee: '/fitness/coffee',
+  fruits: '/fitness/fruits',
+  vegetables: '/fitness/vegetables',
+  junk: '/fitness/junk',
+  steps: '/fitness/steps',
+  sleep: '/fitness/sleep',
+  water: '/fitness/water',
+});
