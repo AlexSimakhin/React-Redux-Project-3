@@ -6,7 +6,7 @@ import { Fitness } from '../../components/fitness';
 // import { createRecordReq } from './../../scripts/createRecordReq';
 // import { updateRecordReq } from './../../scripts/updateRecordReq';
 
-export const Steps = () => {
+export const Sleep = () => {
   // const { currentSelect, setSelect } = useSelect();
   // const { data } = useGetRecordBreakfastFetch(setSelect);
   
@@ -26,7 +26,7 @@ export const Steps = () => {
       <div className={Styles.navigation}>
         
         <div className={Styles.question}>
-          <h1>Сколько шагов ты сегодня прошел?</h1>
+          <h1>Сколько часов ты сегодня спал?</h1>
           <div className={Styles.inputRow}>
             <input type="number" placeholder='Введите свое число' />
           </div>

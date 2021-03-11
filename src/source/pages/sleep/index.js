@@ -1,7 +1,7 @@
-import { Steps as StepsComponent } from '../../bus/steps'
+import { Sleep as SleepComponent } from '../../bus/sleep'
 
-export const Steps = () => (
+export const Sleep = () => (
   <>
-    <StepsComponent />
+    <SleepComponent />
   </>
 );

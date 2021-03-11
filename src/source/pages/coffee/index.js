@@ -1,7 +1,7 @@
-import { Steps as StepsComponent } from '../../bus/steps'
+import { Coffee as CoffeeComponent } from '../../bus/coffee'
 
-export const Steps = () => (
+export const Coffee = () => (
   <>
-    <StepsComponent />
+    <CoffeeComponent />
   </>
 );

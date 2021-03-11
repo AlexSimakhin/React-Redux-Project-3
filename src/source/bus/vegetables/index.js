@@ -3,21 +3,21 @@ import Styles from './styles/index.module.scss';
 
 import { Fitness } from '../../components/fitness';
 import { useSelect } from './hooks/useSelect';
-import { useGetRecordLunchFetch } from './hooks/useGetRecordLunchFetch';
+import { useGetRecordBreakfastFetch } from './hooks/useGetRecordBreakfastFetch';
 import { createRecordReq } from './../../scripts/createRecordReq';
 import { updateRecordReq } from './../../scripts/updateRecordReq';
 
-export const Lunch = () => {
-  const { currentSelect, setSelect } = useSelect();
-  const { data } = useGetRecordLunchFetch(setSelect);
+export const Vegetables = () => {
+  const { currentSelect, setSelect } = useSelect(null);
+  const { data } = useGetRecordBreakfastFetch(setSelect);
   
   const onSubmit = () => {
     console.log(data.hash, currentSelect);
 
     if (data.hash === 0) {
-      createRecordReq('lunch', currentSelect);
+      createRecordReq('vegetables', currentSelect);
     } else {
-      updateRecordReq('lunch', currentSelect, data.hash);
+      updateRecordReq('vegetables', currentSelect, data.hash);
     }
   };
 
@@ -25,28 +25,21 @@ export const Lunch = () => {
     <Fitness>
       
       <div className={Styles.question}>
-        <h1>Ты сегодня обедал?</h1>
+        <h1>Ты сегодня кушал овощи?</h1>
         <div className={Styles.answers}>
           
           <span
             className={cx([Styles.answer, currentSelect === 'none' ? Styles.selected : ''])}
             onClick={() => setSelect('none')}
           >
-            Я не обедал
+            Да
           </span>
 
           <span
             className={cx([Styles.answer, currentSelect === 'light' ? Styles.selected : ''])}
             onClick={() => setSelect('light')}
           >
-            У меня был легкий обед
-          </span>
-
-          <span
-            className={cx([Styles.answer, currentSelect === 'heavy' ? Styles.selected : ''])}
-            onClick={() => setSelect('heavy')}
-          >
-            Я очень плотно покушал
+            Нет
           </span>
 
         </div>

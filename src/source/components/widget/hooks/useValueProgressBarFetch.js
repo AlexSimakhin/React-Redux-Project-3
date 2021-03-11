@@ -1,20 +1,19 @@
-import { api } from '../../../api';
+import { useEffect } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {progressBarActions} from '../actions';
 
-export const useValueProgressBarFetch = async (setProgressBarValue) => {
-  const response = await api.getReports.fetch();
+export const useValueProgressBarFetch = async (_setProgressBarValue) => {
+  const dispatch = useDispatch();
 
-  if (response.status === 200) {
-    const { data } = await response.json();
-    console.log(data);
-    setProgressBarValue(data.data);
+  useEffect(() => {
+    dispatch(progressBarActions.fetchAsync());
+  }, [dispatch]);
 
-    return { data };
-  } else {
-    const error = {
-      status: response.status
-    };
+  const { data, isFetching, error } = useSelector((state) => state.progressBar);
 
-    console.log(error);
-    return { error };
-  }
+  useEffect(() => {
+    _setProgressBarValue(data, isFetching);
+  }, [_setProgressBarValue, data, isFetching])
+
+  return { data, isFetching, error };
 };

@@ -7,17 +7,17 @@ import { useGetRecordBreakfastFetch } from './hooks/useGetRecordBreakfastFetch';
 import { createRecordReq } from './../../scripts/createRecordReq';
 import { updateRecordReq } from './../../scripts/updateRecordReq';
 
-export const Breakfast = () => {
-  const { currentSelect, setSelect } = useSelect();
+export const Fruits = () => {
+  const { currentSelect, setSelect } = useSelect(null);
   const { data } = useGetRecordBreakfastFetch(setSelect);
   
   const onSubmit = () => {
     console.log(data.hash, currentSelect);
 
     if (data.hash === 0) {
-      createRecordReq('breakfast', currentSelect);
+      createRecordReq('fruits', currentSelect);
     } else {
-      updateRecordReq('breakfast', currentSelect, data.hash);
+      updateRecordReq('fruits', currentSelect, data.hash);
     }
   };
 
@@ -25,28 +25,21 @@ export const Breakfast = () => {
     <Fitness>
       
       <div className={Styles.question}>
-        <h1>Ты сегодня завтракал?</h1>
+        <h1>Ты сегодня кушал фрукты?</h1>
         <div className={Styles.answers}>
           
           <span
             className={cx([Styles.answer, currentSelect === 'none' ? Styles.selected : ''])}
             onClick={() => setSelect('none')}
           >
-            Я не завтракал
+            Да
           </span>
 
           <span
             className={cx([Styles.answer, currentSelect === 'light' ? Styles.selected : ''])}
             onClick={() => setSelect('light')}
           >
-            У меня был легкий завтрак
-          </span>
-
-          <span
-            className={cx([Styles.answer, currentSelect === 'heavy' ? Styles.selected : ''])}
-            onClick={() => setSelect('heavy')}
-          >
-            Я очень плотно покушал
+            Нет
           </span>
 
         </div>

@@ -1,0 +1,65 @@
+@import './palette';
+
+h1 {
+  font-size: 33px;
+  font-weight: 700;
+  color: $color3;
+}
+
+.question {
+  width: 680px;
+  margin-left: 89px;
+  margin-right: 159px;
+  margin-top: 77px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .answers {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+
+    .answer {
+      color: $color3;
+      text-decoration: underline;
+      font-weight: 500;
+      font-size: 14px;
+      margin-right: 30px;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      &.selected {
+        text-decoration: none;
+        background-color: $color3;
+        color: $color2;
+        border-radius: 3px;
+        padding: 7px 16px;
+
+        &:hover {
+          cursor: initial;
+        }
+      }
+    }
+  }
+
+  .sendAnswer {
+    background-color: #10c1bc;
+    color: #fff;
+    border-color: transparent;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 15px 23px;
+    letter-spacing: .5px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin-top: 31px;
+    outline: transparent;
+    cursor: pointer;
+  }
+}

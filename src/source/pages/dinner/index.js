@@ -1,7 +1,7 @@
-import { Steps as StepsComponent } from '../../bus/steps'
+import { Dinner as DinnerComponent } from '../../bus/dinner'
 
-export const Steps = () => (
+export const Dinner = () => (
   <>
-    <StepsComponent />
+    <DinnerComponent />
   </>
 );

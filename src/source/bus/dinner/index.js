@@ -3,21 +3,21 @@ import Styles from './styles/index.module.scss';
 
 import { Fitness } from '../../components/fitness';
 import { useSelect } from './hooks/useSelect';
-import { useGetRecordBreakfastFetch } from './hooks/useGetRecordBreakfastFetch';
+import { useGetRecordDinnerFetch } from './hooks/useGetRecordDinnerFetch';
 import { createRecordReq } from './../../scripts/createRecordReq';
 import { updateRecordReq } from './../../scripts/updateRecordReq';
 
-export const Breakfast = () => {
+export const Dinner = () => {
   const { currentSelect, setSelect } = useSelect();
-  const { data } = useGetRecordBreakfastFetch(setSelect);
+  const { data } = useGetRecordDinnerFetch(setSelect);
   
   const onSubmit = () => {
     console.log(data.hash, currentSelect);
 
     if (data.hash === 0) {
-      createRecordReq('breakfast', currentSelect);
+      createRecordReq('dinner', currentSelect);
     } else {
-      updateRecordReq('breakfast', currentSelect, data.hash);
+      updateRecordReq('dinner', currentSelect, data.hash);
     }
   };
 
@@ -25,21 +25,21 @@ export const Breakfast = () => {
     <Fitness>
       
       <div className={Styles.question}>
-        <h1>Ты сегодня завтракал?</h1>
+        <h1>Ты сегодня ужинал?</h1>
         <div className={Styles.answers}>
           
           <span
             className={cx([Styles.answer, currentSelect === 'none' ? Styles.selected : ''])}
             onClick={() => setSelect('none')}
           >
-            Я не завтракал
+            Я не ужинал
           </span>
 
           <span
             className={cx([Styles.answer, currentSelect === 'light' ? Styles.selected : ''])}
             onClick={() => setSelect('light')}
           >
-            У меня был легкий завтрак
+            У меня был легкий ужин
           </span>
 
           <span
