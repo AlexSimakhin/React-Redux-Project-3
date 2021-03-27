@@ -22,7 +22,7 @@ export const Login = () => {
   });
 
   const onSubmit = (value) => {
-    console.log(value);
+    console.log(value); // Fixing
 
     const username = 'alex@alex.alex';
     const password = '12345678';

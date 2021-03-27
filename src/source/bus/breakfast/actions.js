@@ -28,7 +28,7 @@ export const breakfastActions = Object.freeze({
     const response = await api.getRecord.fetch('breakfast');
 
     if (response.status === 200) {
-      const { data } = await response.json();
+      const data = await response.json();
 
       dispatch(breakfastActions.fill(data));
     } else {

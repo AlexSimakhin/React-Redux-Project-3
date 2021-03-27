@@ -1,7 +1,7 @@
 import { api } from './../api/index';
 
 export const updateRecordReq = async (kind, body, hash) => {
-  const response = await api.createRecord.fetch(kind, body, hash);
+  const response = await api.updateRecord.fetch(kind, body, hash);
 
     if (response.status === 204) {
       console.log('Updated');

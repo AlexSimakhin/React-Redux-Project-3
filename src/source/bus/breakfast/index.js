@@ -8,50 +8,52 @@ import { createRecordReq } from './../../scripts/createRecordReq';
 import { updateRecordReq } from './../../scripts/updateRecordReq';
 
 export const Breakfast = () => {
-  const { currentSelect, setSelect } = useSelect();
-  const { data } = useGetRecordBreakfastFetch(setSelect);
+  const { data, isFetching } = useGetRecordBreakfastFetch();
+
+  const { currentSelect, setSelect } = useSelect(data);
   
   const onSubmit = () => {
-    console.log(data.hash, currentSelect);
-
     if (data.hash === 0) {
-      createRecordReq('breakfast', currentSelect);
+      createRecordReq('breakfast', { 'value': currentSelect });
     } else {
-      updateRecordReq('breakfast', currentSelect, data.hash);
+      updateRecordReq('breakfast', { 'value': currentSelect }, data.hash);
+      setSelect(currentSelect);
     }
   };
 
   return (
     <Fitness>
       
-      <div className={Styles.question}>
-        <h1>Ты сегодня завтракал?</h1>
-        <div className={Styles.answers}>
+      {!isFetching && currentSelect &&
+        <div className={Styles.question}>
+          <h1>Ты сегодня завтракал?</h1>
+          <div className={Styles.answers}>
           
-          <span
-            className={cx([Styles.answer, currentSelect === 'none' ? Styles.selected : ''])}
-            onClick={() => setSelect('none')}
-          >
-            Я не завтракал
+            <span
+              className={cx([Styles.answer, currentSelect === 'none' ? Styles.selected : ''])}
+              onClick={() => setSelect('none')}
+            >
+              Я не завтракал
           </span>
 
-          <span
-            className={cx([Styles.answer, currentSelect === 'light' ? Styles.selected : ''])}
-            onClick={() => setSelect('light')}
-          >
-            У меня был легкий завтрак
+            <span
+              className={cx([Styles.answer, currentSelect === 'light' ? Styles.selected : ''])}
+              onClick={() => setSelect('light')}
+            >
+              У меня был легкий завтрак
           </span>
 
-          <span
-            className={cx([Styles.answer, currentSelect === 'heavy' ? Styles.selected : ''])}
-            onClick={() => setSelect('heavy')}
-          >
-            Я очень плотно покушал
+            <span
+              className={cx([Styles.answer, currentSelect === 'heavy' ? Styles.selected : ''])}
+              onClick={() => setSelect('heavy')}
+            >
+              Я очень плотно покушал
           </span>
 
+          </div>
+          <button className={Styles.sendAnswer} onClick={onSubmit}>Ответить</button>
         </div>
-        <button className={Styles.sendAnswer} onClick={onSubmit}>Ответить</button>
-      </div>
+      }
 
     </Fitness>
   )

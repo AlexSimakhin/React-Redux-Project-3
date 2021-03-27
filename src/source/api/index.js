@@ -80,7 +80,7 @@ export const api = Object.freeze({
   updateRecord: {
     fetch: (kind, body, hash) => {
       return fetch(`${root}/records/${hash}?kind=${kind}`, {
-        method: "POST",
+        method: "PUT",
         headers: {
           'Accept': '*/*',
           'Content-Type': 'application/json',

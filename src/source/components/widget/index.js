@@ -13,7 +13,7 @@ export const Widget = () => {
       <span className={Styles.title}>Life Score</span>
       
       <div className={Styles.module}>
-        <span className={Styles.score} style={{ bottom: `${currentProgressBarValue / 200 * 100}%` }}>{currentProgressBarValue}</span>
+        <span className={Styles.score} style={{ bottom: `${currentProgressBarValue / 200 * 100}%` }}>{currentProgressBarValue / 2}</span>
         <div className={Styles.progress}>
           <div className={Styles.fill} style={{ height: `${currentProgressBarValue / 200 * 100}%` }}></div>
         </div>
